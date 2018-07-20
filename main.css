@@ -1,0 +1,55 @@
+.upper-line input {
+    width: 100%;
+}
+
+#adduserscript {
+    /*text-align: right;*/
+}
+
+.maincentraldiv {
+    margin: 0 auto;
+}
+
+.top-bottom-margin {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.usercell {
+    border: 3px solid black;
+    padding: 5px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.role {
+    color: #448CED;
+}
+
+.upper-line input {
+    height: 30px;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-image: url(search-icon.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    padding-left: 21px;
+}
+
+.middle-sort-button {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 0.5em;
+    margin: 0 0.5em;
+}
+/*.name, .email {
+    width: 75%;
+}
+
+.role, .status {
+    width: 25%;
+}*/

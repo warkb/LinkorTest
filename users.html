@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница пользователей</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <div class="col-lg-10 maincentraldiv">
+        <div class="row upper-line top-bottom-margin">
+            <div class="col-lg-6">
+            <input type="text" name="search-user"
+            placeholder="Поиск пользователей">
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3" id="adduserscript"><a href="#">Добавить пользователя</a></div>
+        </div>
+        <div id="sort-buttons" class="top-bottom-margin">
+                Сортировать по: <a href="#">ФИО</a><span id="midcell"><a href="#"><span class="middle-sort-button">Табельный номер</span></a></span><a href="#">Email</a>
+        </div>
+        <div id="users">
+            <div class="usercell">
+                <div class="row">
+                    <div class="col-lg-9 name">Иванов Иван</div>
+                    <div class="role col-lg-3">Администратор</div>
+                </div>
+                <div class="row">
+                    <div class="email  col-lg-9">ivan@gmail.com</div>
+                <div class="status col-lg-3">Активен</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
