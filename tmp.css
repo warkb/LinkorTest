@@ -1,9 +1,0 @@
-#todo-list input.edit {
-  display: none; /* Скрываем строку ввода */
-}
-#todo-list .editing label {
-  display: none; /* Скрывает текст метки при .editing */
-}
-#todo-list .editing input.edit {
-  display: inline; /* Показывает текст в строке ввода при .editing */
-}

@@ -18,6 +18,8 @@
 .usercell {
     border: 3px solid black;
     padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .name {
@@ -53,3 +55,11 @@
 .role, .status {
     width: 25%;
 }*/
+
+.isActiveClass {
+    color: deepSkyBlue;
+}
+
+.isNotActiveClass {
+    color: red;
+}
