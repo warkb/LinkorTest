@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="main.css">
     <!-- подключаем js библиотеки -->
-      <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-      <script src="js/underscore-min.js" type="text/javascript"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
       <script src="backbone-min.js" type="text/javascript"></script>
-      <script src="js/backbone.localStorage-min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js" type="text/javascript"></script>
 </head>
 <body>
     <script type="text/template" id="user-template">
@@ -38,6 +38,7 @@
         <div id="users">
         </div>
     </div>
-  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="main.js"></script>  
+
 </body>
 </html>
