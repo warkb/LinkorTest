@@ -4,7 +4,7 @@
     <title>Страница пользователей</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="source.css">
     <!-- подключаем js библиотеки -->
       <script src="jquery-3.3.1.min.js" type="text/javascript"></script>
       <script src="underscore-min.js" type="text/javascript"></script>

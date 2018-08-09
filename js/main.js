@@ -36,8 +36,6 @@ app.UserList = Backbone.Collection.extend({
 // экземпляр коллекции
 app.userList = new app.UserList();
 
-//userList.fetch() получили данные из базы данных
-
 // рендерим индивидуального юзера
 app.UserView = Backbone.View.extend({
   tagName: 'div',
@@ -50,8 +48,8 @@ app.UserView = Backbone.View.extend({
     obj.role = obj.isAdmin ? 'Администратор' : 'Модератор';
     this.$el.html(this.template(obj));
     // работа фильтра
-    var userInFilter = obj.email.indexOf(filterText) != -1 || obj.fio.indexOf(filterText) != -1
-      || obj.number.indexOf(filterText) != -1 || filterText === '';
+    var userInFilter = obj.email.toLowerCase().indexOf(filterText) != -1 || obj.fio.toLowerCase().indexOf(filterText) != -1
+      || obj.number.toLowerCase().indexOf(filterText) != -1 || filterText === '';
     if (userInFilter) {
       return this; // включить цепочку вызовов
     }
@@ -70,7 +68,7 @@ app.AppView = Backbone.View.extend({
     // мы рендерим их с помощью addOne
     app.userList.on('add', this.addOne, this);
     app.userList.on('reset', this.addAll, this);
-    app.userList.fetch(); // Загружаем список из local storage
+    app.userList.fetch(); // Загружаем список из базы данных
   },
 
   // тут будет работа фильтра
@@ -119,7 +117,6 @@ var Controller = Backbone.Router.extend({
       app.appView.addAll();
     },
     sortbyemail: function () {
-      console.log('email');
       app.userList.comparator = app.sortByEmail;
       app.userList.sort();
       app.appView.addAll();
@@ -134,5 +131,3 @@ Backbone.history.start();  // Запускаем HTML5 History push
 // users.forEach(function (item) {
 //     app.userList.create(item);
 // })
-
-app.userList.fetch()

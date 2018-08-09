@@ -1,0 +1,60 @@
+@import "colors";
+
+.upper-line input {
+    width: 100%;
+}
+
+#adduserscript {
+    /*text-align: right;*/
+}
+
+.maincentraldiv {
+    margin: 0 auto;
+}
+
+.top-bottom-margin {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.upper-line input {
+    height: 30px;
+    border: 3px solid $bordercolor;
+    border-radius: 30px;
+    background-image: url(search-icon.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    padding-left: 21px;
+}
+
+.middle-sort-button {
+    border-left: 1px solid $bordercolor;
+    border-right: 1px solid $bordercolor;
+    padding: 0 0.5em;
+    margin: 0 0.5em;
+}
+
+@import "user-cell-styles";
+
+$rightpadding: 15px;
+
+#add-change-user .textfield {
+    width: 100%;
+    border: 3px solid $bordercolor;
+    /*margin-left: 5px;*/
+    /*margin-right: 15px;*/
+}
+
+#add-change-user .textfield {
+    padding-right: $rightpadding;
+}
+
+#add-change-user .fieldname {
+    text-align: right;
+}
+
+#add-change-user .row {
+    padding-right: $rightpadding;
+    margin-bottom: 15px;
+}

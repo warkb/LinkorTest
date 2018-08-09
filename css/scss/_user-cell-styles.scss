@@ -1,0 +1,23 @@
+.usercell {
+    border: 3px solid $bordercolor;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.role {
+    color: $rolecolor;
+}
+
+.isActiveClass {
+    color: deepSkyBlue;
+}
+
+.isNotActiveClass {
+    color: $notActiveColor;
+}
