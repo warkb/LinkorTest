@@ -1,56 +1,4 @@
 localStorage.clear();
-var users = [{
-                fio:'Иванов Иван',
-                email: 'ivan@gmail.com',
-                password:'*******',
-                defaultpage:'page1',
-                number:'123',
-                isAdmin: false,
-                isActive: true,
-                roles:{
-                    'role1':[{page: 'page1', access:['r','w']}, {page: 'page2', access:['r']}],
-                    'role2':[{page: 'page1', access:['r']}],
-                }
-            },
-            {
-                fio:'Сидоров Георгий',
-                email: 'sidorov@gmail.com',
-                password:'*******',
-                defaultpage:'page1',
-                number:'456',
-                isAdmin: true,
-                isActive: false,
-                roles:{
-                    'role1':[{page: 'page1', access:['r','w']}, {page: 'page2', access:['r']}],
-                    'role2':[{page: 'page1', access:['r']}],
-                    }
-                },
-            {
-                fio:'Гольдберг Сергей',
-                email: 'goldberg@gmail.com',
-                password:'*******',
-                defaultpage:'page1',
-                number:'789',
-                isAdmin: true,
-                isActive: true,
-                roles:{
-                    'role1':[{page: 'page1', access:['r','w']}, {page: 'page2', access:['r']}],
-                    'role2':[{page: 'page1', access:['r']}],
-                    }
-                },
-            {
-                fio:'Франсист Николай',
-                email: 'fransist@gmail.com',
-                password:'*******',
-                defaultpage:'page1',
-                number:'101',
-                isAdmin: false,
-                isActive: false,
-                roles:{
-                    'role1':[{page: 'page1', access:['r','w']}, {page: 'page2', access:['r']}],
-                    'role2':[{page: 'page1', access:['r']}],
-                }
-            }];
 
 var app = {}; // пространство имен нашего приложения
 // функции сортировки для коллекции UserList
@@ -81,11 +29,14 @@ app.User = Backbone.Model.extend({
 });
 app.UserList = Backbone.Collection.extend({
    model: app.User,
-   localStorage: new Store("users")
+   //localStorage: new Store("users"),
+   url: 'http://localhost:8080/db', //url по которому можно обратиться к базе данных
 });
 
 // экземпляр коллекции
 app.userList = new app.UserList();
+
+//userList.fetch() получили данные из базы данных
 
 // рендерим индивидуального юзера
 app.UserView = Backbone.View.extend({
@@ -180,7 +131,8 @@ Backbone.history.start();  // Запускаем HTML5 History push
 // app.appView = new app.AppView();
 
 // добавляем пользователей в коллекцию
-users.forEach(function (item) {
-    app.userList.create(item);
-})
+// users.forEach(function (item) {
+//     app.userList.create(item);
+// })
 
+app.userList.fetch()

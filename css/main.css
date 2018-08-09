@@ -63,3 +63,23 @@
 .isNotActiveClass {
     color: red;
 }
+
+#add-change-user .textfield {
+    width: 100%;
+    border: 3px solid black;
+    /*margin-left: 5px;*/
+    /*margin-right: 15px;*/
+}
+
+#add-change-user .textfield {
+    padding-right: 15px;
+}
+
+#add-change-user .fieldname {
+    text-align: right;
+}
+
+#add-change-user .row {
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
