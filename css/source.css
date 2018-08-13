@@ -138,4 +138,8 @@ fieldset {
     justify-content: flex-end;
 }
 
+.hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=source.css.map */

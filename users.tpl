@@ -27,33 +27,36 @@
             placeholder="Поиск пользователей" id="filterInput">
             </div>
             <div class="col-lg-3"></div>
-            <div class="col-lg-3" id="adduserscript"><a href="#">Добавить пользователя</a></div>
+            <div class="col-lg-3" id="adduserscript"><a href="#!/add-user">Добавить пользователя</a></div>
         </div>
         <div id="sort-buttons" class="top-bottom-margin">
                 Сортировать по: <a href="#!/sort-fio">ФИО</a>
                 <span id="midcell"><a href="#!/sort-number"><span class="middle-sort-button">Табельный номер</span></a></span><a href="#!/sort-email">Email</a>
         </div>
         <!-- форма для добавления/изменения пользователей -->
-        <form id="add-change-user"`>
+        <form id="add-change-user" class="hidden">
             <div class="row">
                 <div class="col-lg-3 fieldname">ФИО:</div>
-                <input type="textfield" class="text col-lg-9 textfield" name="fio">
+                <input type="textfield" class="text col-lg-9 textfield" name="fio" id="fio">
             </div>
             <div class="row">
                 <div class="col-lg-3 fieldname">Табельный номер:</div>
-                <input type="textfield" class="text col-lg-9 textfield" name="number">
+                <input type="textfield" class="text col-lg-9 textfield" name="number" id="number">
             </div><div class="row">
                 <div class="col-lg-3 fieldname">Страница по умолчанию:</div>
-                <input type="textfield" class="text col-lg-9 textfield" name="defpage">
+                <select class="text col-lg-9 textfield" name="defpage" id="defpage">
+                    <option>CRM</option>
+                    <option>Rolepage</option>
+                </select>
             </div><div class="row">
                 <div class="col-lg-3 fieldname">Email:</div>
-                <input type="textfield" class="text col-lg-9 textfield" name="email">
+                <input type="textfield" class="text col-lg-9 textfield" name="email" id="email">
             </div><div class="row">
                 <div class="col-lg-3 fieldname">Пароль:</div>
-                <input type="password" class="text col-lg-9 textfield" name="pass">
+                <input type="password" class="text col-lg-9 textfield" name="pass" id="pass">
             </div><div class="row">
                 <div class="col-lg-3 fieldname">Повторите пароль:</div>
-                <input type="password" class="text col-lg-9 textfield" name="ackpass">
+                <input type="password" class="text col-lg-9 textfield" name="ackpass" id="ackpass">
             </div>
             <div class="row" id="admin-checkboxes">
                 <div class="col-lg-3 fieldname"></div>
@@ -71,28 +74,28 @@
                 <div class="col-lg-3 fieldname"></div>
                 <fieldset class="col-lg-9 fieldname">
                     <legend> Роли</legend>
-                    <input type="checkbox" id="box-3" name="isActive">
-                    <label for="box-3">Активен</label>
+                    <input type="checkbox" id="box-3" class="role-box" name="isBookkeep">
+                    <label for="box-3">Бухгалтерия</label>
 
-                    <input type="checkbox" id="box-4" name="isActive">
-                    <label for="box-4">Активен</label>
+                    <input type="checkbox" id="box-4" class="role-box" name="isDepot">
+                    <label for="box-4">Склад</label>
 
-                    <input type="checkbox" id="box-5" name="isActive">
-                    <label for="box-5">Активен</label>
+                    <input type="checkbox" id="box-5" class="role-box" name="isProduct">
+                    <label for="box-5">Производство</label>
 
-                    <input type="checkbox" id="box-6" name="isActive">
-                    <label for="box-6">Активен</label>
+                    <input type="checkbox" id="box-6" class="role-box" name="isManage">
+                    <label for="box-6">Менеджер</label>
                 </fieldset>
             </div>
             <div class="row">
                 <div class="col-lg-3 fieldname"></div>
-                <a href="#" class="button">Выбрать все</a>
+                <a href="#!/select-all-roles" class="button">Выбрать все</a>
             </div>
             <div class="row">
                 <div class="col-lg-3 fieldname"></div>
                 <div class="col-lg-9 save-and-cancel-buttons">
-                    <a href="#" class="button">Сохранить</a>
-                    <a href="#" class="button">Отменить</a>
+                    <a href="#!/save-user" class="button">Сохранить</a>
+                    <a href="#!/cancel-user" class="button">Отменить</a>
                 </div>
             </div>
         </form>
