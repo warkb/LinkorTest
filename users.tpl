@@ -3,13 +3,9 @@
 <head>
     <title>Страница пользователей</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="source.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/source.css">
     <!-- подключаем js библиотеки -->
-      <script src="jquery-3.3.1.min.js" type="text/javascript"></script>
-      <script src="underscore-min.js" type="text/javascript"></script>
-      <script src="backbone-min.js" type="text/javascript"></script>
-      <script src="backbone.localStorage-min.js" type="text/javascript"></script>
 </head>
 <body>
     <script type="text/template" id="user-template">
@@ -38,7 +34,7 @@
                 <span id="midcell"><a href="#!/sort-number"><span class="middle-sort-button">Табельный номер</span></a></span><a href="#!/sort-email">Email</a>
         </div>
         <!-- форма для добавления/изменения пользователей -->
-        <form id="add-change-user" hidden>
+        <form id="add-change-user"`>
             <div class="row">
                 <div class="col-lg-3 fieldname">ФИО:</div>
                 <input type="textfield" class="text col-lg-9 textfield" name="fio">
@@ -59,11 +55,55 @@
                 <div class="col-lg-3 fieldname">Повторите пароль:</div>
                 <input type="password" class="text col-lg-9 textfield" name="ackpass">
             </div>
+            <div class="row" id="admin-checkboxes">
+                <div class="col-lg-3 fieldname"></div>
+                <div class="col-lg-2">
+                    <input type="checkbox" id="box-1" name="isAdmin">
+                    <label for="box-1">Адмнистратор</label>
+                </div>
+                <div class="col-lg-2">
+                    <input type="checkbox" id="box-2" name="isActive">
+                    <label for="box-2">Активен</label>
+                </div>
+            </div>
+            <!-- область формы с ролями -->
+            <div class="row" id="roles-checkboxes">
+                <div class="col-lg-3 fieldname"></div>
+                <fieldset class="col-lg-9 fieldname">
+                    <legend> Роли</legend>
+                    <input type="checkbox" id="box-3" name="isActive">
+                    <label for="box-3">Активен</label>
+
+                    <input type="checkbox" id="box-4" name="isActive">
+                    <label for="box-4">Активен</label>
+
+                    <input type="checkbox" id="box-5" name="isActive">
+                    <label for="box-5">Активен</label>
+
+                    <input type="checkbox" id="box-6" name="isActive">
+                    <label for="box-6">Активен</label>
+                </fieldset>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 fieldname"></div>
+                <a href="#" class="button">Выбрать все</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 fieldname"></div>
+                <div class="col-lg-9 save-and-cancel-buttons">
+                    <a href="#" class="button">Сохранить</a>
+                    <a href="#" class="button">Отменить</a>
+                </div>
+            </div>
         </form>
         <div id="users">
         </div>
     </div>
-  <script type="text/javascript" src="main.js"></script>  
+        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+      <script src="js/underscore-min.js" type="text/javascript"></script>
+      <script src="js/backbone-min.js" type="text/javascript"></script>
+      <script src="js/backbone.localStorage-min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="js/main.js"></script>  
 
 </body>
 </html>
