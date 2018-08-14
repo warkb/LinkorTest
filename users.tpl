@@ -45,8 +45,8 @@
             </div><div class="row">
                 <div class="col-lg-3 fieldname">Страница по умолчанию:</div>
                 <select class="text col-lg-9 textfield" name="defpage" id="defpage">
-                    <option>CRM</option>
-                    <option>Rolepage</option>
+                    <option value="page1">CRM</option>
+                    <option value="page2">Rolepage</option>
                 </select>
             </div><div class="row">
                 <div class="col-lg-3 fieldname">Email:</div>

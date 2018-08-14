@@ -4,7 +4,7 @@ import json
 import bson
 from bson import json_util, BSON
 import pymongo
-from bottle import (route, template, get, static_file, run, post, request)
+from bottle import (route, template, get, static_file, run, post, request, put)
 
 usersArray = [{
                 'fio':'Иванов Иван',
@@ -17,6 +17,8 @@ usersArray = [{
                 'roles':{
                     'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
                     'role2':[{'page': 'page1', 'access':['r']}],
+                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
+                    'role4':[{'page': 'page1', 'access':['r']}],
                 }
             },
             {
@@ -30,6 +32,8 @@ usersArray = [{
                 'roles':{
                     'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
                     'role2':[{'page': 'page1', 'access':['r']}],
+                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
+                    'role4':[{'page': 'page1', 'access':['r']}],
                     }
                 },
             {
@@ -43,8 +47,10 @@ usersArray = [{
                 'roles':{
                     'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
                     'role2':[{'page': 'page1', 'access':['r']}],
-                    }
-                },
+                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
+                    'role4':[{'page': 'page1', 'access':['r']}],
+                }
+            },
             {
                 'fio':'Франсист Николай',
                 'email': 'fransist@gmail.com',
@@ -56,7 +62,9 @@ usersArray = [{
                 'roles':{
                     'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
                     'role2':[{'page': 'page1', 'access':['r']}],
-                }
+                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
+                    'role4':[{'page': 'page1', 'access':['r']}],
+                    }
             }]
 
 client = pymongo.MongoClient('localhost', 27017)
@@ -100,7 +108,16 @@ def mainpage():
 def mainpage():
     print(request.body.readlines()[0])
     x = json.loads(request.body.readlines()[0])
+    print('------------------')
     coll.insert_one(x)
+
+@put("/db")
+def mainpage():
+    print('put!')
+    print('put!')
+    print('put!')
+    print('put!')
+    print('put!')
 
 # запускаемся
 createdb()

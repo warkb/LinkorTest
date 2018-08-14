@@ -41,6 +41,44 @@ app.UserView = Backbone.View.extend({
   tagName: 'div',
   className: 'usercell',
   template: _.template($('#user-template').html()),
+  events: {
+    "click": "editUser",
+  },
+
+  editUser: function () {
+    console.log(app.userList);
+    // чекбоксы в нужное состояние
+    $("#pass").prop("disabled", false);
+    $("#ackpass").prop("disabled", false);
+
+    $("input[type=checkbox]").prop('checked', false);
+    $("#add-change-user").removeClass("hidden");
+    // заполняем форму согласно используемой модели
+    document.getElementById('fio').value = this.model.attributes.fio;
+    document.getElementById('number').value = this.model.attributes.number;
+    document.getElementById('defpage').value = this.model.attributes.defaultpage;
+    document.getElementById('email').value = this.model.attributes.email;
+    document.getElementById('pass').value = this.model.attributes.pass;
+    document.getElementById('ackpass').value = this.model.attributes.ackpass;
+    // чекбоксы
+    $("#box-1").prop('checked', this.model.attributes.isAdmin);
+    $("#box-2").prop('checked', this.model.attributes.isActive);
+    console.log(this.model.attributes.roles.role1[0].access);
+    console.log(this.model.attributes.roles.role1[0].access === ['r','w']);
+    $("#box-3").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
+    $("#box-4").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
+    $("#box-5").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
+    $("#box-6").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
+
+    // делаем форму изменения email недоступной для редактирования
+    $("#email").prop("disabled", true);
+
+    // если почта от гугла - делаем изменение пароля невозможным
+    if (this.model.attributes.email.indexOf("@gmail.com") != -1) {
+      $("#pass").prop("disabled", true);
+      $("#ackpass").prop("disabled", true);
+    }
+  },
   render: function(){
     obj = this.model.toJSON();
     obj.isActiveText = obj.isActive ? 'Активен' : 'Не активен';
@@ -109,13 +147,11 @@ var Controller = Backbone.Router.extend({
         "!/save-user": "saveUser"
     },
     sortbyfio: function () {
-      console.log('fio');
       app.userList.comparator = app.sortByFio;
       app.userList.sort();
       app.appView.addAll();
     },
     sortbynumber: function () {
-      console.log('num');
       app.userList.comparator = app.sortByNumber;
       app.userList.sort();
       app.appView.addAll();
@@ -126,6 +162,12 @@ var Controller = Backbone.Router.extend({
       app.appView.addAll();
     },
     addUser: function () {
+      $('#add-change-user')[0].reset();
+      // чекбоксы в нужное состояние
+      $("#email").prop("disabled", false);
+      $("#pass").prop("disabled", false);
+      $("#ackpass").prop("disabled", false);
+
       $("input[type=checkbox]").prop('checked', false);
       $("#add-change-user").removeClass("hidden");
     },
@@ -167,7 +209,7 @@ var Controller = Backbone.Router.extend({
         return;  
       }
       // проверяем, что email отсутствует в базе
-      if (app.userList.pluck('email').indexOf(user.email) != -1 ) {
+      if (app.userList.pluck('email').indexOf(user.email) != -1 && !$("#email").prop("disabled")) {
         alert("Такой email уже есть в базе!");
         document.location.replace("#");
         return;  
@@ -195,27 +237,60 @@ var Controller = Backbone.Router.extend({
           },
           {
             page: 'page2',
+            access: user.isBookkeep ? ['r','w'] : ['r']
+          }],
+          role2: [
+          {
+            page: 'page1',
             access: user.isManage ? ['r','w'] : ['r']
           },
           {
-            page: 'page3',
+            page: 'page2',
+            access: user.isManage ? ['r','w'] : ['r']
+          }],
+          role3: [
+          {
+            page: 'page1',
             access: user.isProduct ? ['r','w'] : ['r']
           },
           {
-            page: 'page4',
+            page: 'page2',
+            access: user.isProduct ? ['r','w'] : ['r']
+          }],
+          role4: [
+          {
+            page: 'page1',
             access: user.isDepot ? ['r','w'] : ['r']
           },
-          ]
+          {
+            page: 'page2',
+            access: user.isDepot ? ['r','w'] : ['r']
+          }],
         }
       }
       // добавляем нового пользователя в коллекцию
-      app.userList.create(newUser);
+      if (!$("#email").prop("disabled")) {
+        // добавляем пользователя
+        app.userList.create(newUser);
+      }
+      else {
+        var filteredCollection = app.userList.filter(function (item) {
+          return item.get('email') == document.getElementById('email').value;
+        });
+        var curModel = filteredCollection[0];
+        console.log('obj');
+        console.log(curModel);
+        curModel.set(newUser);
+        curModel.save();
+        // перерисовываем
+        app.appView.addAll();
+      }
       $("#add-change-user").addClass("hidden");
-      document.location.replace("#");
+      document.location.replace("#");  
     }
 });
 
-app.controller = new Controller(); // Создаём контроллер\
+app.controller = new Controller(); // Создаём контроллер
 Backbone.history.start();  // Запускаем HTML5 History push    
 // app.appView = new app.AppView();
 
