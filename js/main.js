@@ -29,8 +29,8 @@ app.User = Backbone.Model.extend({
 });
 app.UserList = Backbone.Collection.extend({
    model: app.User,
-   localStorage: new Store("users"),
-   //url: 'http://localhost:8080/db', //url по которому можно обратиться к базе данных
+   //localStorage: new Store("users"),
+   url: 'http://localhost:8080/db', //url по которому можно обратиться к базе данных
 });
 
 // экземпляр коллекции
@@ -160,9 +160,15 @@ var Controller = Backbone.Router.extend({
         return;  
       }
       // проверяем email
-      var re = /^[\d\w\_]+\@\w+\.\w+$/;
+      var re = /^[\d\w\-]{1,}\@[\d\w\-]{1,}\.\w+$/;
       if (!re.test(user.email)) {
         alert("Неправильный email!");
+        document.location.replace("#");
+        return;  
+      }
+      // проверяем, что email отсутствует в базе
+      if (app.userList.pluck('email').indexOf(user.email) != -1 ) {
+        alert("Такой email уже есть в базе!");
         document.location.replace("#");
         return;  
       }
@@ -172,22 +178,7 @@ var Controller = Backbone.Router.extend({
         document.location.replace("#");
         return;  
       }
-      ////////////////////////////////////////////////////
-      // {
-      //     'fio':'Иванов Иван',
-      //     'email': 'ivan@gmail.com',
-      //     'password':'*******',
-      //     'defaultpage':'page1',
-      //     'number':'123',
-      //     'isAdmin': False,
-      //     'isActive': True,
-      //     'roles':{
-      //         'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-      //         'role2':[{'page': 'page1', 'access':['r']}],
-      //     }
-      // },
-      /////////////////////////
-
+      // json с новым юзером
       var newUser = {
         fio: user.fio,
         email: user.email,
@@ -217,7 +208,9 @@ var Controller = Backbone.Router.extend({
           ]
         }
       }
-      console.log(newUser);
+      // добавляем нового пользователя в коллекцию
+      app.userList.create(newUser);
+      $("#add-change-user").addClass("hidden");
       document.location.replace("#");
     }
 });

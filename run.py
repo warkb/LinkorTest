@@ -1,9 +1,10 @@
 import os
 import json
-from bson import json_util
 
+import bson
+from bson import json_util, BSON
 import pymongo
-from bottle import route, template, get, static_file, run
+from bottle import (route, template, get, static_file, run, post, request)
 
 usersArray = [{
                 'fio':'Иванов Иван',
@@ -93,8 +94,13 @@ def mainpage():
 
 @route("/db")
 def mainpage():
-    print(list(coll.find()))
     return json_util.dumps(list(coll.find()))
+
+@post("/db")
+def mainpage():
+    print(request.body.readlines()[0])
+    x = json.loads(request.body.readlines()[0])
+    coll.insert_one(x)
 
 # запускаемся
 createdb()

@@ -3,8 +3,8 @@
 <head>
     <title>Страница пользователей</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/source.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="source.css">
     <!-- подключаем js библиотеки -->
 </head>
 <body>
@@ -102,11 +102,11 @@
         <div id="users">
         </div>
     </div>
-        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-      <script src="js/underscore-min.js" type="text/javascript"></script>
-      <script src="js/backbone-min.js" type="text/javascript"></script>
-      <script src="js/backbone.localStorage-min.js" type="text/javascript"></script>
-      <script type="text/javascript" src="js/main.js"></script>  
+        <script src="jquery-3.3.1.min.js" type="text/javascript"></script>
+      <script src="underscore-min.js" type="text/javascript"></script>
+      <script src="backbone-min.js" type="text/javascript"></script>
+      <script src="backbone.localStorage-min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="main.js"></script>  
 
 </body>
 </html>
