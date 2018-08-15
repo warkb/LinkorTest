@@ -106,6 +106,10 @@
       <script src="underscore-min.js" type="text/javascript"></script>
       <script src="backbone-min.js" type="text/javascript"></script>
       <script src="backbone.localStorage-min.js" type="text/javascript"></script>
+      <!-- получаем конфиг -->
+      <script type="text/javascript">
+          var config = {{!config}}
+      </script>
       <script type="text/javascript" src="main.js"></script>  
 
 </body>

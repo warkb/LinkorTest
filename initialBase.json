@@ -8,7 +8,9 @@
                 "isActive": true,
                 "roles": {
                     "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
-                    "role2":[{"page": "page1", "access":["r"]}]
+                    "role2":[{"page": "page1", "access":["r"]}],
+                    "role3":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role4":[{"page": "page1", "access":["r"]}]
                     }
                 },
             {
@@ -21,7 +23,9 @@
                 "isActive": false,
                 "roles":{
                     "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
-                    "role2":[{"page": "page1", "access":["r"]}]
+                    "role2":[{"page": "page1", "access":["r"]}],
+                    "role3":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role4":[{"page": "page1", "access":["r"]}]
                     }
                 },
             {
@@ -34,7 +38,9 @@
                 "isActive": true,
                 "roles":{
                     "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
-                    "role2":[{"page": "page1", "access":["r"]}]
+                    "role2":[{"page": "page1", "access":["r"]}],
+                    "role3":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role4":[{"page": "page1", "access":["r"]}]
                     }
                 },
             {
@@ -47,7 +53,9 @@
                 "isActive": false,
                 "roles":{
                     "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
-                    "role2":[{"page": "page1", "access":["r"]}]
+                    "role2":[{"page": "page1", "access":["r"]}],
+                    "role3":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role4":[{"page": "page1", "access":["r"]}]
                 }
             }]
 }

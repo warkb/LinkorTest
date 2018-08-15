@@ -30,8 +30,9 @@ app.User = Backbone.Model.extend({
 app.UserList = Backbone.Collection.extend({
    model: app.User,
    //localStorage: new Store("users"),
-   url: 'http://localhost:8080/db', //url по которому можно обратиться к базе данных
+   url: 'http://' + config.run_host + ":" + config.run_port + '/db', //url по которому можно обратиться к базе данных
 });
+
 
 // экземпляр коллекции
 app.userList = new app.UserList();
@@ -73,7 +74,13 @@ app.UserView = Backbone.View.extend({
     console.log(this.model.attributes.roles.role1[0].access === ['r','w']);
     $("#box-3").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
     $("#box-4").prop('checked', this.model.attributes.roles.role2[0].access.toString() == ['r','w'].toString());
+    console.log(this.model.attributes);
+    console.log('--------------------------');
+    console.log(this.model.attributes.roles);
+    console.log('--------------------------');
+    console.log(this.model.attributes.roles.role3);
     $("#box-5").prop('checked', this.model.attributes.roles.role3[0].access.toString() == ['r','w'].toString());
+
     $("#box-6").prop('checked', this.model.attributes.roles.role4[0].access.toString() == ['r','w'].toString());
 
     // делаем форму изменения email недоступной для редактирования

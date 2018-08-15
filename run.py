@@ -54,7 +54,7 @@ def stylesheets(filename):
 
 @route("/")
 def mainpage():
-    return template('users')
+    return template('users', config=configStr + ';')
 
 @route("/db")
 def mainpage():
