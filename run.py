@@ -106,18 +106,16 @@ def mainpage():
 
 @post("/db")
 def mainpage():
-    print(request.body.readlines()[0])
     x = json.loads(request.body.readlines()[0])
-    print('------------------')
-    coll.insert_one(x)
+    # print(list(coll.find({'email': x['email']}))[0])
+    if not '_id' in x:
+        # добавляем элемент
+        coll.insert_one(x)
+    else:
+        # модифицируем элемент
+        del x['_id']
+        coll.update_one({'email': x['email']}, {'$set': x})
 
-@put("/db")
-def mainpage():
-    print('put!')
-    print('put!')
-    print('put!')
-    print('put!')
-    print('put!')
 
 # запускаемся
 createdb()
