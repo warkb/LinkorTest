@@ -65,8 +65,8 @@ app.UserView = Backbone.View.extend({
     document.getElementById('number').value = this.model.attributes.number;
     document.getElementById('defpage').value = this.model.attributes.defaultpage;
     document.getElementById('email').value = this.model.attributes.email;
-    document.getElementById('pass').value = this.model.attributes.pass;
-    document.getElementById('ackpass').value = this.model.attributes.ackpass;
+    document.getElementById('pass').value = this.model.attributes.password;
+    document.getElementById('ackpass').value = this.model.attributes.password;
     // чекбоксы
     $("#box-1").prop('checked', this.model.attributes.isAdmin);
     $("#box-2").prop('checked', this.model.attributes.isActive);
@@ -227,8 +227,9 @@ var Controller = Backbone.Router.extend({
         document.location.replace("#");
         return;  
       }
+      user.password = user.pass;
       // проверяем, что пароли совпадают
-      if (user.pass != user.ackpass) {
+      if (user.password != user.ackpass) {
         alert("Пароли не совпали!");
         document.location.replace("#");
         return;  
@@ -237,7 +238,7 @@ var Controller = Backbone.Router.extend({
       var newUser = {
         fio: user.fio,
         email: user.email,
-        password: user.pass,
+        password: user.password,
         defaultpage: user.defpage,
         number: user.number,
         isAdmin: user.isAdmin,
