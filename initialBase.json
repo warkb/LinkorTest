@@ -1,0 +1,53 @@
+{"data":      [{
+                "fio":"Иванов Иван",
+                "email": "ivan@gmail.com",
+                "password":"*******",
+                "defaultpage":"page1",
+                "number":"123",
+                "isAdmin": false,
+                "isActive": true,
+                "roles": {
+                    "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role2":[{"page": "page1", "access":["r"]}]
+                    }
+                },
+            {
+                "fio":"Сидоров Георгий",
+                "email": "sidorov@gmail.com",
+                "password":"*******",
+                "defaultpage":"page1",
+                "number":"456",
+                "isAdmin": true,
+                "isActive": false,
+                "roles":{
+                    "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role2":[{"page": "page1", "access":["r"]}]
+                    }
+                },
+            {
+                "fio":"Гольдберг Сергей",
+                "email": "goldberg@gmail.com",
+                "password":"*******",
+                "defaultpage":"page1",
+                "number":"789",
+                "isAdmin": true,
+                "isActive": true,
+                "roles":{
+                    "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role2":[{"page": "page1", "access":["r"]}]
+                    }
+                },
+            {
+                "fio":"Франсист Николай",
+                "email": "fransist@gmail.com",
+                "password":"*******",
+                "defaultpage":"page1",
+                "number":"101",
+                "isAdmin": false,
+                "isActive": false,
+                "roles":{
+                    "role1":[{"page": "page1", "access":["r","w"]}, {"page": "page2", "access":["r"]}],
+                    "role2":[{"page": "page1", "access":["r"]}]
+                }
+            }]
+}

@@ -1,0 +1,6 @@
+{
+    "mongo_addr": "localhost",
+    "mongo_port": 27017,
+    "run_host": "localhost",
+    "run_port": 8080
+}

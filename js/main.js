@@ -46,7 +46,13 @@ app.UserView = Backbone.View.extend({
   },
 
   editUser: function () {
-    console.log(app.userList);
+    // покажем форму редактирования
+    $('html, body').animate({
+        scrollTop: 0
+    }, 100);
+
+    document.location.replace("#");
+
     // чекбоксы в нужное состояние
     $("#pass").prop("disabled", false);
     $("#ackpass").prop("disabled", false);
@@ -66,9 +72,9 @@ app.UserView = Backbone.View.extend({
     console.log(this.model.attributes.roles.role1[0].access);
     console.log(this.model.attributes.roles.role1[0].access === ['r','w']);
     $("#box-3").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
-    $("#box-4").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
-    $("#box-5").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
-    $("#box-6").prop('checked', this.model.attributes.roles.role1[0].access.toString() == ['r','w'].toString());
+    $("#box-4").prop('checked', this.model.attributes.roles.role2[0].access.toString() == ['r','w'].toString());
+    $("#box-5").prop('checked', this.model.attributes.roles.role3[0].access.toString() == ['r','w'].toString());
+    $("#box-6").prop('checked', this.model.attributes.roles.role4[0].access.toString() == ['r','w'].toString());
 
     // делаем форму изменения email недоступной для редактирования
     $("#email").prop("disabled", true);
@@ -242,11 +248,11 @@ var Controller = Backbone.Router.extend({
           role2: [
           {
             page: 'page1',
-            access: user.isManage ? ['r','w'] : ['r']
+            access: user.isDepot ? ['r','w'] : ['r']
           },
           {
             page: 'page2',
-            access: user.isManage ? ['r','w'] : ['r']
+            access: user.isDepot ? ['r','w'] : ['r']
           }],
           role3: [
           {
@@ -260,11 +266,11 @@ var Controller = Backbone.Router.extend({
           role4: [
           {
             page: 'page1',
-            access: user.isDepot ? ['r','w'] : ['r']
+            access: user.isManage ? ['r','w'] : ['r']
           },
           {
             page: 'page2',
-            access: user.isDepot ? ['r','w'] : ['r']
+            access: user.isManage ? ['r','w'] : ['r']
           }],
         }
       }

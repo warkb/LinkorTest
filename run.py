@@ -6,68 +6,24 @@ from bson import json_util, BSON
 import pymongo
 from bottle import (route, template, get, static_file, run, post, request, put)
 
-usersArray = [{
-                'fio':'Иванов Иван',
-                'email': 'ivan@gmail.com',
-                'password':'*******',
-                'defaultpage':'page1',
-                'number':'123',
-                'isAdmin': False,
-                'isActive': True,
-                'roles':{
-                    'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role2':[{'page': 'page1', 'access':['r']}],
-                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role4':[{'page': 'page1', 'access':['r']}],
-                }
-            },
-            {
-                'fio':'Сидоров Георгий',
-                'email': 'sidorov@gmail.com',
-                'password':'*******',
-                'defaultpage':'page1',
-                'number':'456',
-                'isAdmin': True,
-                'isActive': False,
-                'roles':{
-                    'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role2':[{'page': 'page1', 'access':['r']}],
-                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role4':[{'page': 'page1', 'access':['r']}],
-                    }
-                },
-            {
-                'fio':'Гольдберг Сергей',
-                'email': 'goldberg@gmail.com',
-                'password':'*******',
-                'defaultpage':'page1',
-                'number':'789',
-                'isAdmin': True,
-                'isActive': True,
-                'roles':{
-                    'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role2':[{'page': 'page1', 'access':['r']}],
-                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role4':[{'page': 'page1', 'access':['r']}],
-                }
-            },
-            {
-                'fio':'Франсист Николай',
-                'email': 'fransist@gmail.com',
-                'password':'*******',
-                'defaultpage':'page1',
-                'number':'101',
-                'isAdmin': False,
-                'isActive': False,
-                'roles':{
-                    'role1':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role2':[{'page': 'page1', 'access':['r']}],
-                    'role3':[{'page': 'page1', 'access':['r','w']}, {'page': 'page2', 'access':['r']}],
-                    'role4':[{'page': 'page1', 'access':['r']}],
-                    }
-            }]
 
-client = pymongo.MongoClient('localhost', 27017)
+# получаем первоначальные данные из файла
+with open('initialBase.json', 'r', encoding='utf-8') as usersFile:
+    usersArray = json.load(usersFile)['data']
+
+# получаем конфиг
+with open('config.json', 'r', encoding='utf-8') as configFile:
+    configStr = configFile.read()
+    print(configStr)
+    configData = json.loads(configStr)
+
+
+MONGO_ADDR = configData['mongo_addr']
+MONGO_PORT = configData['mongo_port']
+RUN_HOST = configData['run_host']
+RUN_PORT = configData['run_port']
+
+client = pymongo.MongoClient(MONGO_ADDR, MONGO_PORT)
 db = client.linkordb
 coll = db.users
 
@@ -119,4 +75,4 @@ def mainpage():
 
 # запускаемся
 createdb()
-run(host='localhost', port=8080, debug=True)
+run(host=RUN_HOST, port=RUN_PORT, debug=True)
